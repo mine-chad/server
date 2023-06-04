@@ -15,12 +15,12 @@
  */
 
 #include <iostream>
-#include <errno.h>
-#include <signal.h>
+#include <csignal>
 #include <getopt.h>
 
 #include "info.h"
-#include "term_handler.h"
+#include "term_handler.c"
+#include "info.c"
 
 int main(int argc, char *argv[]) {
 
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
       { NULL                  , 0                , NULL , 0   }
     };
     /* Check for arguments */
-    while(1) {
+    while(true) {
         int c = getopt_long(argc, argv, "ht:vDf:d:c:S:", long_options, NULL);
 
         /* Detect the end of the options. */
