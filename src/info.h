@@ -14,8 +14,10 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#ifndef __VERSION_H__
-# define __VERSION_H__
+#ifndef VERSION_H
+# define VERSION_H
+
+#include <stdio.h>
 
 /*
  * === VERSION_STR ===
@@ -41,4 +43,4 @@
 void printf_version(void);
 void printf_help(void);
 
-#endif /* __VERSION_H__ */
+#endif /* VERSION_H */

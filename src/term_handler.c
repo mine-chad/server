@@ -24,7 +24,7 @@
 void term_handler(int signum) {
     /*
      * TODO: When the server becomes powerful enough to need a shutdown operation,
-     * change the code so it shuts down safely the server instead of prompting
+     * change the code, so it shuts down safely the server instead of prompting
      * the user if they want to quit or not.
      * Not only that the current approach is lame, but it's also not asynced!
      *

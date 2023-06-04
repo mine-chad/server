@@ -14,8 +14,8 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#ifndef __TERM_HANDLER_H__
-# define __TERM_HANDLER_H__
+#ifndef TERM_HANDLER_H
+# define TERM_HANDLER_H
 
 void term_handler(int signum);
 
