@@ -1,6 +1,8 @@
 #include <iostream>
+#include "logging/logger.h"
 
 int main() {
-    std::cout << "Hello, world!";
+    logger::log(logger::INFO, "Hello, world!");
+
     return 0;
 }
