@@ -3,6 +3,5 @@
 
 int main() {
     logger::log(logger::INFO, "Hello, world!");
-
     return 0;
 }
