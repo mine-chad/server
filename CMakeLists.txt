@@ -3,8 +3,8 @@ project(minechad)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_library(color src/logging/color.h src/logging/color.cpp)
-add_library(logging src/logging/logger.h src/logging/logger.cpp)
+add_library(color src/logging/color.cpp)
+add_library(logging src/logging/logger.cpp)
 target_link_libraries(logging color)
 
 add_executable(minechad-server src/main.cpp)
