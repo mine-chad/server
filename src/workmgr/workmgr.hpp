@@ -1,13 +1,12 @@
 #pragma once
 
 #include "worker.hpp"
-#include <vector>
+#include <chrono>
 #include <list>
 
 #define THREADLIMIT_DEFAULT	5
 
-class WorkMgr
-{
+class WorkMgr {
 private:
 	std::list<Worker> workers;
 public:
@@ -29,7 +28,7 @@ public:
 	}
 
 	// Goes through the list and executes the functions
-	void run(const std::list<std::pair<Job,void*>>& todo)
+	void run(const std::list<std::pair<Job, void*>>& todo)
 	{
 		auto it = todo.begin();
 		while (it != todo.end()) {
@@ -39,15 +38,13 @@ public:
 					j.run(it->first, it->second);
 					it++;
 				}
-			usleep(1000); // avoid busy waiting
+			std::this_thread::sleep_for(std::chrono::nanoseconds(1000));
 			}
 		}
 		
 		// Wait till all workers will have their jobs finished
 		for (auto &j : workers) {
-			while (j.active()) {
-				usleep(1000); // avoid busy waiting
-			}
+			j.join();
 		}
 	}
 };
