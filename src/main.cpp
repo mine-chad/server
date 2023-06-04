@@ -20,15 +20,16 @@
 #include <getopt.h>
 
 #include "info.h"
-#include "term_handler.c"
+#include "term_handler.h"
 
 int main(int argc, char *argv[]) {
 
-    /* Set up a handler for the SIGTERM signal */
+    /* Set up a handler for the SIGTERM and SIGINT signal */
     signal(SIGTERM, term_handler);
+    signal(SIGINT, term_handler);
 
     /* Hello World - very important :D */
-    std::cout << "Hello, world!";
+    std::cout << "Hello, world!" << std::endl;
 
     /* Struct argument options - getopt_long style */
     static struct option long_options [] = {

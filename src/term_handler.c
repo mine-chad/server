@@ -22,12 +22,13 @@
 #include "info.h"
 
 void term_handler(int signum) {
-    if(signum == SIGTERM) {
+    if(signum == SIGTERM || signum == SIGINT) {
         char yesno;
         printf("Are you really sure that you want to quit? [Y(es)/n(o)]: ");
 
         while(1) {
-            yesno = getchar();
+            /* Get the first character and convert it to lowercase */
+            yesno = tolower(getchar());
 
             if(yesno = tolower(yesno) == 'y') {
                 printf("Quiting...\n");
