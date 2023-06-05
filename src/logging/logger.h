@@ -21,19 +21,15 @@
 #include "color.h"
 
 namespace logger {
-    enum Level {
-        _LOG_DEBUG,
-        _LOG_INFO,
-        _LOG_WARN,
-        _LOG_ERROR,
-        _LOG_FATAL
-    };
-
     namespace _internal {
         char* getTime();
     };
 
-    void log(Level level, const char* message);
+    void debug(const char *message);
+    void info(const char *message);
+    void warn(const char *message);
+    void error(const char *message);
+    void fatal(const char *message);
 };
 
 #endif //MINECHAD_LOGGER_H

@@ -15,25 +15,27 @@
  */
 
 #include "logger.h"
+#include "../info.h"
 
-void logger::log(logger::Level level, const char *message) {
-    switch(level) {
-        case _LOG_DEBUG:
-            std::cout << color::RGB{0, 255, 255} << "[" << _internal::getTime() << "/DEBUG] " << message << color::RGB{255, 255, 255} << std::endl;
-            break;
-        case _LOG_INFO:
-            std::cout << color::RGB{0, 255, 0} << "[" << _internal::getTime() << "/INFO] " << message << color::RGB{255, 255, 255} << std::endl;
-            break;
-        case _LOG_WARN:
-            std::cout << color::RGB{255, 255, 0} << "[" << _internal::getTime() << "/WARN] " << message << color::RGB{255, 255, 255} << std::endl;
-            break;
-        case _LOG_ERROR:
-            std::cout << color::RGB{255, 85, 85} << "[" << _internal::getTime() << "/ERROR] " << message << color::RGB{255, 255, 255} << std::endl;
-            break;
-        case _LOG_FATAL:
-            std::cout << color::RGB{170, 0, 0} << "[" << _internal::getTime() << "/FATAL] " << message << color::RGB{255, 255, 255} << std::endl;
-            break;
-    }
+void logger::debug(const char *message) {
+    if (!DEBUG) return;
+    std::cout << color::RGB{0, 255, 255} << "[" << _internal::getTime() << "/DEBUG] " << message << color::RGB{255, 255, 255} << std::endl;
+}
+
+void logger::info(const char *message) {
+    std::cout << color::RGB{0, 255, 0} << "[" << _internal::getTime() << "/INFO] " << message << color::RGB{255, 255, 255} << std::endl;
+}
+
+void logger::warn(const char *message) {
+    std::cout << color::RGB{255, 255, 0} << "[" << _internal::getTime() << "/WARN] " << message << color::RGB{255, 255, 255} << std::endl;
+}
+
+void logger::error(const char *message) {
+    std::cout << color::RGB{255, 85, 85} << "[" << _internal::getTime() << "/ERROR] " << message << color::RGB{255, 255, 255} << std::endl;
+}
+
+void logger::fatal(const char *message) {
+    std::cout << color::RGB{170, 0, 0} << "[" << _internal::getTime() << "/FATAL] " << message << color::RGB{255, 255, 255} << std::endl;
 }
 
 char *logger::_internal::getTime() {

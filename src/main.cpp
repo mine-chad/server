@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
     signal(SIGINT, term_handler);
 
     /* Hello World - very important :D */
-    logger::log(logger::_LOG_INFO, "Hello, world!");
+    logger::info("Hello world!");
 
     /* Struct argument options - getopt_long style */
     static struct option long_options [] = {
