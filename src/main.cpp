@@ -20,14 +20,16 @@
 #include <getopt.h>
 
 #include "info.h"
-#include "term_handler.h"
 #include "logging/logger.h"
+
+void shutdown();
+void interrupt_handler(int signal);
 
 int main(int argc, char *argv[]) {
 
     /* Set up a handler for the SIGTERM and SIGINT signal */
-    signal(SIGTERM, term_handler);
-    signal(SIGINT, term_handler);
+    signal(SIGTERM, interrupt_handler);
+    signal(SIGINT, interrupt_handler);
 
     /* Hello World - very important :D */
     logger::info("Hello world!");
@@ -49,13 +51,29 @@ int main(int argc, char *argv[]) {
         switch(c) {
             /* help */
             case 'h':
-                printf_help();
+                printf(
+                        "\n"
+                        "Mine-chad server"                                                               "\n"
+                        "Server for the Mine-chad sandbox open-world game."                              "\n"
+                        "\n"
+                        "Usage: mine-chad-server [options]"                                              "\n"
+                        "\n"
+                        "Options:"                                                                       "\n"
+                        "-h, --help\t\t\t"              "Output this help list and exit"                 "\n"
+                        "-v, --version\t\t\t"           "Output version information and license and exit""\n"
+                        "-D, --debug\t\t\t"             "Output the debug log"                           "\n"
+                        "\n"
+                        "Note that Mine-chad is still under heavy development."                          "\n"
+                );
                 exit(EXIT_SUCCESS);
                 break;
 
             /* version */
             case 'v':
-                printf_version();
+                printf(
+                        "Mine-chad server %s",
+                        VERSION_STR
+                );
                 exit(EXIT_SUCCESS);
                 break;
 
@@ -70,7 +88,19 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    shutdown();
+
     /* Last resort return */
 
     return 0;
+}
+
+void shutdown() {
+    logger::info("Shutting down...");
+    exit(EXIT_SUCCESS);
+}
+
+void interrupt_handler(int signal) {
+    logger::warn("Interrupt signal received");
+    shutdown();
 }

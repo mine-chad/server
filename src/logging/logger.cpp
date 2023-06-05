@@ -27,7 +27,7 @@ void logger::info(const char *message) {
 }
 
 void logger::warn(const char *message) {
-    std::cout << color::RGB{255, 255, 0} << "[" << _internal::getTime() << "/WARN] " << message << color::RGB{255, 255, 255} << std::endl;
+    std::cout << color::RGB{255, 255, 0} << "[" << _internal::getTime() << "/WARN] " << message << color::RGB{255, 255, 85} << std::endl;
 }
 
 void logger::error(const char *message) {

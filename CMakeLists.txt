@@ -10,7 +10,7 @@ add_library(color src/logging/color.cpp)
 add_library(logging src/logging/logger.cpp)
 target_link_libraries(logging color)
 
-add_executable(minechad-server src/main.cpp src/info.c src/term_handler.c)
+add_executable(minechad-server src/main.cpp)
 
 target_link_libraries(minechad-server logging)
 
