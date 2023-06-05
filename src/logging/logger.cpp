@@ -18,19 +18,19 @@
 
 void logger::log(logger::Level level, const char *message) {
     switch(level) {
-        case DEBUG:
+        case _LOG_DEBUG:
             std::cout << color::RGB{0, 255, 255} << "[" << _internal::getTime() << "/DEBUG] " << message << color::RGB{255, 255, 255} << std::endl;
             break;
-        case INFO:
+        case _LOG_INFO:
             std::cout << color::RGB{0, 255, 0} << "[" << _internal::getTime() << "/INFO] " << message << color::RGB{255, 255, 255} << std::endl;
             break;
-        case WARN:
+        case _LOG_WARN:
             std::cout << color::RGB{255, 255, 0} << "[" << _internal::getTime() << "/WARN] " << message << color::RGB{255, 255, 255} << std::endl;
             break;
-        case ERROR:
+        case _LOG_ERROR:
             std::cout << color::RGB{255, 85, 85} << "[" << _internal::getTime() << "/ERROR] " << message << color::RGB{255, 255, 255} << std::endl;
             break;
-        case FATAL:
+        case _LOG_FATAL:
             std::cout << color::RGB{170, 0, 0} << "[" << _internal::getTime() << "/FATAL] " << message << color::RGB{255, 255, 255} << std::endl;
             break;
     }

@@ -22,11 +22,11 @@
 
 namespace logger {
     enum Level {
-        DEBUG,
-        INFO,
-        WARN,
-        ERROR,
-        FATAL
+        _LOG_DEBUG,
+        _LOG_INFO,
+        _LOG_WARN,
+        _LOG_ERROR,
+        _LOG_FATAL
     };
 
     namespace _internal {

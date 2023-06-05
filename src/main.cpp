@@ -15,11 +15,12 @@
  */
 
 #include <iostream>
-   
+
 #include <csignal>
 #include <getopt.h>
 
 #include "info.h"
+#include "term_handler.h"
 #include "logging/logger.h"
 
 int main(int argc, char *argv[]) {
@@ -29,7 +30,7 @@ int main(int argc, char *argv[]) {
     signal(SIGINT, term_handler);
 
     /* Hello World - very important :D */
-    logger::log(logger::INFO, "Hello, world!");
+    logger::log(logger::_LOG_INFO, "Hello, world!");
 
     /* Struct argument options - getopt_long style */
     static struct option long_options [] = {

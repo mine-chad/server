@@ -14,6 +14,8 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
+#include <stdio.h>
+
 #include "info.h"
 
 void printf_help(void) {

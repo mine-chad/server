@@ -17,8 +17,6 @@
 #ifndef VERSION_H
 # define VERSION_H
 
-#include <stdio.h>
-
 /*
  * === VERSION_STR ===
  * Defines the final version - as a string, not a floating number!
