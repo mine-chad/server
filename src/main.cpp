@@ -26,6 +26,7 @@ void shutdown();
 void interrupt_handler(int signal);
 
 int main(int argc, char *argv[]) {
+    logger::init();
 
     /* Set up a handler for the SIGTERM and SIGINT signal */
     signal(SIGTERM, interrupt_handler);
@@ -97,6 +98,9 @@ int main(int argc, char *argv[]) {
 
 void shutdown() {
     logger::info("Shutting down...");
+
+    logger::close();
+
     exit(EXIT_SUCCESS);
 }
 

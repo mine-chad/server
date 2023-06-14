@@ -16,26 +16,47 @@
 
 #include "logger.h"
 #include "../info.h"
+#include <fstream>
+
+std::ofstream f_out;
+
+void logger::init() {
+    f_out.open("mine-chad.log", std::ios::out | std::ios::app);
+    if (!f_out.is_open()) {
+        std::cout << color::RGB{255, 0, 0} << "[" << _internal::getTime() << "/FATAL] Failed to open log file." << color::RGB{255, 255, 255} << std::endl;
+        std::cout << color::RGB{255, 0, 0} << "[" << _internal::getTime() << "/FATAL] Exiting..." << color::RGB{255, 255, 255} << std::endl;
+        exit(1);
+    }
+}
+
+void logger::close() {
+    f_out.close();
+}
 
 void logger::debug(const char *message) {
     if (!DEBUG) return;
     std::cout << color::RGB{0, 255, 255} << "[" << _internal::getTime() << "/DEBUG] " << message << color::RGB{255, 255, 255} << std::endl;
+    f_out << "[" << _internal::getTime() << "/DEBUG] " << message << std::endl;
 }
 
 void logger::info(const char *message) {
     std::cout << color::RGB{0, 255, 0} << "[" << _internal::getTime() << "/INFO] " << message << color::RGB{255, 255, 255} << std::endl;
+    f_out << "[" << _internal::getTime() << "/INFO] " << message << std::endl;
 }
 
 void logger::warn(const char *message) {
     std::cout << color::RGB{255, 255, 0} << "[" << _internal::getTime() << "/WARN] " << message << color::RGB{255, 255, 85} << std::endl;
+    f_out << "[" << _internal::getTime() << "/WARN] " << message << std::endl;
 }
 
 void logger::error(const char *message) {
     std::cout << color::RGB{255, 85, 85} << "[" << _internal::getTime() << "/ERROR] " << message << color::RGB{255, 255, 255} << std::endl;
+    f_out << "[" << _internal::getTime() << "/ERROR] " << message << std::endl;
 }
 
 void logger::fatal(const char *message) {
     std::cout << color::RGB{170, 0, 0} << "[" << _internal::getTime() << "/FATAL] " << message << color::RGB{255, 255, 255} << std::endl;
+    f_out << "[" << _internal::getTime() << "/FATAL] " << message << std::endl;
 }
 
 char *logger::_internal::getTime() {

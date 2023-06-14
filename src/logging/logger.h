@@ -25,6 +25,9 @@ namespace logger {
         char* getTime();
     };
 
+    void init();
+    void close();
+
     void debug(const char *message);
     void info(const char *message);
     void warn(const char *message);
