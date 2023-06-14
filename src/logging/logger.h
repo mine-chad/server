@@ -14,31 +14,25 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#ifndef VERSION_H
-# define VERSION_H
+#ifndef MINECHAD_LOGGER_H
+#define MINECHAD_LOGGER_H
 
-/*
- * === VERSION_STR ===
- * Defines the final version - as a string, not a floating number!
- */
-# ifndef VERSION_STR
-#  define VERSION_STR "0.0"
-# endif /* VERSION_STR */
+#include <ctime>
+#include "color.h"
 
-/*
- * === DEBUG ===
- * By default, DEBUG should be false.
- *
- * If you want to debug literally everything, set DEBUG as true.
- * Otherwise, set DEBUG as false.
- *
- * NOTE: When compiling to production always check this to be set to false
- */
-#ifndef DEBUG
-# define DEBUG false
-#endif /* DEBUG */
+namespace logger {
+    namespace _internal {
+        char* getTime();
+    };
 
-void printf_version(void);
-void printf_help(void);
+    void init();
+    void close();
 
-#endif /* VERSION_H */
+    void debug(const char *message);
+    void info(const char *message);
+    void warn(const char *message);
+    void error(const char *message);
+    void fatal(const char *message);
+};
+
+#endif //MINECHAD_LOGGER_H

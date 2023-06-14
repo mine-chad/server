@@ -14,31 +14,17 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#ifndef VERSION_H
-# define VERSION_H
+#ifndef MINECHAD_COLOR_H
+#define MINECHAD_COLOR_H
 
-/*
- * === VERSION_STR ===
- * Defines the final version - as a string, not a floating number!
- */
-# ifndef VERSION_STR
-#  define VERSION_STR "0.0"
-# endif /* VERSION_STR */
+#include <iostream>
 
-/*
- * === DEBUG ===
- * By default, DEBUG should be false.
- *
- * If you want to debug literally everything, set DEBUG as true.
- * Otherwise, set DEBUG as false.
- *
- * NOTE: When compiling to production always check this to be set to false
- */
-#ifndef DEBUG
-# define DEBUG false
-#endif /* DEBUG */
+namespace color {
+    struct RGB {
+        unsigned char r, g, b;
+    };
 
-void printf_version(void);
-void printf_help(void);
+    std::ostream& operator<<(std::ostream& os, const RGB& rgb);
+};
 
-#endif /* VERSION_H */
+#endif //MINECHAD_COLOR_H

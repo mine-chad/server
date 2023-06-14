@@ -14,9 +14,8 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#ifndef TERM_HANDLER_H
-# define TERM_HANDLER_H
+#include "color.h"
 
-void term_handler(int signum);
-
-#endif
+std::ostream &color::operator<<(std::ostream &os, const color::RGB &rgb) {
+    return os << "\033[38;2;" << (int) rgb.r << ";" << (int) rgb.g << ";" << (int) rgb.b << "m";
+}
