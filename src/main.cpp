@@ -18,7 +18,6 @@
 #include <cstdio>
 #include <getopt.h>
 
-#include "info.h"
 #include "logging/logger.hpp"
 
 void shutdown();
