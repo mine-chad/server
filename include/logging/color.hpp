@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 mine-chad
+ * Copyright (C) 2023-2024 mine-chad
  * This file is part of the Mine-chad project.
  *
  * Mine-chad is free software: you can redistribute it and/or modify it under
@@ -14,25 +14,17 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#ifndef MINECHAD_LOGGER_H
-#define MINECHAD_LOGGER_H
+#ifndef MINECHAD_COLOR_H
+#define MINECHAD_COLOR_H
 
-#include <ctime>
-#include "color.h"
+#include <ostream>
 
-namespace logger {
-    namespace _internal {
-        char* getTime();
+namespace color {
+    struct RGB {
+        unsigned char r, g, b;
     };
 
-    void init();
-    void close();
-
-    void debug(const char *message);
-    void info(const char *message);
-    void warn(const char *message);
-    void error(const char *message);
-    void fatal(const char *message);
+    std::ostream& operator<<(std::ostream& os, const RGB& rgb);
 };
 
-#endif //MINECHAD_LOGGER_H
+#endif // MINECHAD_COLOR_H
