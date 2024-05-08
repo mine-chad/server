@@ -15,6 +15,7 @@
  */
 
 #include <csignal>
+#include <cstdio>
 #include <getopt.h>
 
 #include "info.h"
@@ -65,15 +66,15 @@ int main(int argc, char *argv[]) {
                         "\n"
                         "Note that Mine-chad is still under heavy development."                          "\n"
                 );
+                fflush(stdout);
                 exit(EXIT_SUCCESS);
                 break;
 
             /* version */
             case 'v':
-                printf(
-                        "Mine-chad server %s",
-                        VERSION_STR
-                );
+                printf("Mine-chad server v%s\n",
+                       VERSION_STR);
+                fflush(stdout);
                 exit(EXIT_SUCCESS);
                 break;
 
