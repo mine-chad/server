@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 3.25)
 project(minechad-server
   LANGUAGES C CXX)
 
-# Set project type
+# Set project version
 set(PROJECT_VERSION "0.0.1-alpha")
 
 #### DEPENDENCIES CHECK ####
