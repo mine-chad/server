@@ -1,18 +1,42 @@
+# Set CMAKE minimum version
 cmake_minimum_required(VERSION 3.25)
-project(minechad)
 
-set(CMAKE_CXX_STANDARD 20)
 
-# Set the output directory for libraries
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/libs)
+#### PROJECT ####
+#---------------#
 
-add_library(color src/logging/color.cpp)
-add_library(logging src/logging/logger.cpp)
-target_link_libraries(logging color)
+# Set project name
+project(minechad-server
+  LANGUAGES C CXX)
 
-add_executable(minechad-server src/main.cpp)
+# Set project version
+set(PROJECT_VERSION "0.0.1-alpha")
 
-target_link_libraries(minechad-server logging)
+#### DEPENDENCIES CHECK ####
+#--------------------------#
 
-# Set the output directory for executables
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
+
+#### COMPILE ####
+#---------------#
+
+# Manage version
+add_compile_definitions(VERSION_STR="${PROJECT_VERSION}")
+
+# Add source subdir
+add_subdirectory(src)
+
+
+#### GENERATE DOCUMENTATION ####
+#------------------------------#
+
+
+#### INSTALL ####
+#---------------#
+
+
+#### TESTING ####
+#---------------#
+
+
+#### PACKAGE ####
+#---------------#

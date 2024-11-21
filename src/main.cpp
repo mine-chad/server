@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 mine-chad
+ * Copyright (C) 2023-2024 mine-chad
  * This file is part of the Mine-chad project.
  *
  * Mine-chad is free software: you can redistribute it and/or modify it under
@@ -14,13 +14,11 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#include <iostream>
-
 #include <csignal>
+#include <cstdio>
 #include <getopt.h>
 
-#include "info.h"
-#include "logging/logger.h"
+#include "logging/logger.hpp"
 
 void shutdown();
 void interrupt_handler(int signal);
@@ -37,10 +35,11 @@ int main(int argc, char *argv[]) {
 
     /* Struct argument options - getopt_long style */
     static struct option long_options [] = {
-      { "help"                , no_argument      , NULL , 'h' },
-      { "version"             , no_argument      , NULL , 'v' },
-      { NULL                  , 0                , NULL , 0   }
+      { "help"   , no_argument, NULL , 'h' },
+      { "version", no_argument, NULL , 'v' },
+      { NULL     , 0          , NULL , 0   }
     };
+
     /* Check for arguments */
     while(true) {
         int c = getopt_long(argc, argv, "ht:vDf:d:c:S:", long_options, NULL);
@@ -66,15 +65,15 @@ int main(int argc, char *argv[]) {
                         "\n"
                         "Note that Mine-chad is still under heavy development."                          "\n"
                 );
+                fflush(stdout);
                 exit(EXIT_SUCCESS);
                 break;
 
             /* version */
             case 'v':
-                printf(
-                        "Mine-chad server %s",
-                        VERSION_STR
-                );
+                printf("Mine-chad server v%s\n",
+                       VERSION_STR);
+                fflush(stdout);
                 exit(EXIT_SUCCESS);
                 break;
 

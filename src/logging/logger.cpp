@@ -14,9 +14,15 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#include "logger.h"
-#include "../info.h"
+
 #include <fstream>
+#include <cstdlib>
+#include <iostream>
+
+
+/* CMake target include */
+#include "info.h"
+#include "logging/logger.hpp"
 
 std::ofstream f_out;
 
