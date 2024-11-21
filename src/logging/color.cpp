@@ -14,33 +14,9 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#ifndef VERSION_H
-# define VERSION_H
+#include <iostream>
+#include "logging/color.hpp"
 
-#include <stdio.h>
-
-/*
- * === VERSION_STR ===
- * Defines the final version - as a string, not a floating number!
- */
-# ifndef VERSION_STR
-#  define VERSION_STR "0.0"
-# endif /* VERSION_STR */
-
-/*
- * === DEBUG ===
- * By default, DEBUG should be false.
- *
- * If you want to debug literally everything, set DEBUG as true.
- * Otherwise, set DEBUG as false.
- *
- * NOTE: When compiling to production always check this to be set to false
- */
-#ifndef DEBUG
-# define DEBUG false
-#endif /* DEBUG */
-
-void printf_version(void);
-void printf_help(void);
-
-#endif /* VERSION_H */
+std::ostream &color::operator<<(std::ostream &os, const color::RGB &rgb) {
+    return os << "\033[38;2;" << (int) rgb.r << ";" << (int) rgb.g << ";" << (int) rgb.b << "m";
+}

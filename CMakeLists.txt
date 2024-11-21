@@ -1,10 +1,42 @@
+# Set CMAKE minimum version
 cmake_minimum_required(VERSION 3.25)
-project(minechad)
 
-set(CMAKE_CXX_STANDARD 20)
 
-add_executable(minechad-server
-        src/info.c
-        src/term_handler.c
-        src/main.cpp
-)
+#### PROJECT ####
+#---------------#
+
+# Set project name
+project(minechad-server
+  LANGUAGES C CXX)
+
+# Set project version
+set(PROJECT_VERSION "0.0.1-alpha")
+
+#### DEPENDENCIES CHECK ####
+#--------------------------#
+
+
+#### COMPILE ####
+#---------------#
+
+# Manage version
+add_compile_definitions(VERSION_STR="${PROJECT_VERSION}")
+
+# Add source subdir
+add_subdirectory(src)
+
+
+#### GENERATE DOCUMENTATION ####
+#------------------------------#
+
+
+#### INSTALL ####
+#---------------#
+
+
+#### TESTING ####
+#---------------#
+
+
+#### PACKAGE ####
+#---------------#

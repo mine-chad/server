@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 mine-chad
+ * Copyright (C) 2023-2024 mine-chad
  * This file is part of the Mine-chad project.
  *
  * Mine-chad is free software: you can redistribute it and/or modify it under
@@ -14,9 +14,31 @@
  * of Technology (MIT) at <tlo-inquiries@mit.edu>.
  */
 
-#ifndef TERM_HANDLER_H
-# define TERM_HANDLER_H
+#ifndef MINECHAD_LOGGER_H
+#define MINECHAD_LOGGER_H
 
-void term_handler(int signum);
+#include "color.hpp"
 
-#endif
+#include <ctime>
+
+/**
+ * @brief logger namespace for logging
+ *
+ * TODO: Update this docstring
+ */
+namespace logger {
+    namespace _internal {
+        char* getTime();
+    };
+
+    void init();
+    void close();
+
+    void debug(const char *message);
+    void info(const char *message);
+    void warn(const char *message);
+    void error(const char *message);
+    void fatal(const char *message);
+};
+
+#endif // MINECHAD_LOGGER_H

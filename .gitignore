@@ -1,4 +1,13 @@
 cmake-build-*
-CMakeFiles
+CMakeFiles/
 CMakeCache.txt
 .idea/
+CMakeCache.txt
+Makefile
+*.a
+*.o
+*.out
+*.exe
+build/
+libs/
+/.cache/clangd
